@@ -74,9 +74,9 @@ public class GUI {
 			public void run() {
 				try {
 					//if (SystemUtils.isWindows())
-					WebLookAndFeel.install();	// добавление библиотеки графических элементов
+					WebLookAndFeel.install();	// РґРѕР±Р°РІР»РµРЅРёРµ Р±РёР±Р»РёРѕС‚РµРєРё РіСЂР°С„РёС‡РµСЃРєРёС… СЌР»РµРјРµРЅС‚РѕРІ
 					GUI window = new GUI();
-					window.frmBobcBeta.setLocationRelativeTo(null); // выравнивание окна
+					window.frmBobcBeta.setLocationRelativeTo(null); // РІС‹СЂР°РІРЅРёРІР°РЅРёРµ РѕРєРЅР°
 					window.frmBobcBeta.setVisible(true);
 				} catch (Exception e) { new Err(0); }
 			}
@@ -84,7 +84,7 @@ public class GUI {
 	}
 
 	public GUI() {
-			initialize(); // инициализация графических элементов
+			initialize(); // РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏ РіСЂР°С„РёС‡РµСЃРєРёС… СЌР»РµРјРµРЅС‚РѕРІ
 	}
 
 		private void initialize() {
@@ -232,7 +232,7 @@ public class GUI {
 		//-------------------------------------------------------------------------------
 		slider.addChangeListener(new ChangeListener() {
 			public void stateChanged(ChangeEvent arg0) {
-				label_1.setText(slider.getValue()+" Мбайт");
+				label_1.setText(slider.getValue()+" РњР±Р°Р№С‚");
 			}
 		});
 		
