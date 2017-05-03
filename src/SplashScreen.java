@@ -8,7 +8,7 @@ import javax.swing.JProgressBar;
 
 public class SplashScreen extends JFrame {
 	/**
-	 * Класс для показа заставки программы
+	 * В Р»Р°СЃСЃ РґР»В¤ РїРѕРєР°Р·Р° Р·Р°СЃС‚Р°РІРєРё РїСЂРѕРіСЂР°РјРјС‹
 	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel imglabel;
