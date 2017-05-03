@@ -50,7 +50,7 @@ public class CipherTestAll implements Runnable {
 
 	public final String[] ciph_names = { "AES", "Blowfish", "CAST5", "DESede" };
 
-	/* конструктор для теста на Java */
+	/* РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ С‚РµСЃС‚Р° РЅР° Java */
 	public CipherTestAll(int TEXT_SIZE, JTextArea textArea,
 			JProgressBar progBar, JButton stBut, String lstName) {
 		Security.addProvider(new BouncyCastleProvider());
@@ -65,13 +65,13 @@ public class CipherTestAll implements Runnable {
 		try {
 			lst = new FileWriter(lstName, true);
 		} catch (IOException e) {
-			new Err(6); // Ошибка открытия файла для записи результатов теста
+			new Err(6); // РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° РґР»СЏ Р·Р°РїРёСЃРё СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ С‚РµСЃС‚Р°
 			return;
 		}
 
 	}
 
-	/* конструктор для теста на C++ */
+	/* РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ С‚РµСЃС‚Р° РЅР° C++ */
 	public CipherTestAll(int TEXT_SIZE, JTextArea textArea,
 			JProgressBar progBar, JButton stBut, String lstName,
 			String[] exe_names) {
@@ -88,13 +88,13 @@ public class CipherTestAll implements Runnable {
 		try {
 			lst = new FileWriter(lstName, true);
 		} catch (IOException e) {
-			new Err(6); // Ошибка открытия файла для записи результатов теста
+			new Err(6); // РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° РґР»СЏ Р·Р°РїРёСЃРё СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ С‚РµСЃС‚Р°
 			return;
 		}
 
 	}
 
-	/* Шифрование на Java */
+	/* РЁРёС„СЂРѕРІР°РЅРёРµ РЅР° Java */
 	public byte[] encryptOrDecrypt(int mode, String alg, byte[] key, byte[] IV,
 			byte[] in) {
 		SecretKeySpec KS = new SecretKeySpec(key, alg);
@@ -171,7 +171,7 @@ public class CipherTestAll implements Runnable {
 		int pbValue = 0;
 
 		switch (lang) {
-		case 0: // Тестирование алгоритмов на Java
+		case 0: // РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ Р°Р»РіРѕСЂРёС‚РјРѕРІ РЅР° Java
 
 			double[] speedResults = new double[ciph_names.length];
 
