@@ -6,7 +6,7 @@ then
 chmod -R 777 bobc/cpp
 fi
 
-mem=$(grep MemFree /proc/meminfo | awk '{print $2}')
+mem=$(grep MemAvailable /proc/meminfo | awk '{print $2}')
 
 
 I=`dpkg -s wine | grep "Status" ` 
