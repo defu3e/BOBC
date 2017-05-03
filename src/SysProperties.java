@@ -7,7 +7,7 @@ import org.hyperic.sigar.Mem;
 import org.hyperic.sigar.Sigar;
 import org.hyperic.sigar.SigarException;
 
-// Класс для получения сведений о системе
+// В Р»Р°СЃСЃ РґР»В¤ РїРѕР»СѓС‡РµРЅРёВ¤ СЃРІРµРґРµРЅРёР№ Рѕ СЃРёСЃС‚РµРјРµ
 public class SysProperties extends Thread {
 	
 	public final int bInMb = 1000000;
