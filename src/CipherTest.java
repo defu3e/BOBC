@@ -13,40 +13,31 @@ import javax.swing.JProgressBar;
 import javax.swing.JTextArea;
 
 
-
-
-
-
-
-
-
-
-
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 public class CipherTest implements Runnable {
 
-	public static final int mbTob = 1000000;	// байтов в 1 МБ
+	public static final int mbTob = 1000000;	// Р±Р°Р№С‚РѕРІ РІ 1 РњР‘
 	
-	public int TEXT_SIZE;	// размер текста
-	public int KEY_SIZE;	// длина ключа
-	public int IV_SIZE;		// длина инициализирующего вектора
-	public int ciph_mode;	// идентификатор шифра
-	public int lang;		// язык реализации
+	public int TEXT_SIZE;	// СЂР°Р·РјРµСЂ С‚РµРєСЃС‚Р°
+	public int KEY_SIZE;	// РґР»РёРЅР° РєР»СЋС‡Р°
+	public int IV_SIZE;		// РґР»РёРЅР° РёРЅРёС†РёР°Р»РёР·РёСЂСѓСЋС‰РµРіРѕ РІРµРєС‚РѕСЂР°
+	public int ciph_mode;	// РёРґРµРЅС‚РёС„РёРєР°С‚РѕСЂ С€РёС„СЂР°
+	public int lang;		// СЏР·С‹Рє СЂРµР°Р»РёР·Р°С†РёРё
 	
-	public Process process;	// процесс для запуска exe файлов
+	public Process process;	// РїСЂРѕС†РµСЃСЃ РґР»СЏ Р·Р°РїСѓСЃРєР° exe С„Р°Р№Р»РѕРІ
 	
-	String ciph_name;		// название алгаритма
+	String ciph_name;		// РЅР°Р·РІР°РЅРёРµ Р°Р»РіР°СЂРёС‚РјР°
 	
-	/*Переменные графического интерфейса*/
+	/*РџРµСЂРµРјРµРЅРЅС‹Рµ РіСЂР°С„РёС‡РµСЃРєРѕРіРѕ РёРЅС‚РµСЂС„РµР№СЃР°*/
 	public JTextArea textArea;
 	public JProgressBar progBar;
 	public JButton stBut;
 	
-	/*Переменная для записи в текстовый файл*/
+	/*РџРµСЂРµРјРµРЅРЅР°СЏ РґР»СЏ Р·Р°РїРёСЃРё РІ С‚РµРєСЃС‚РѕРІС‹Р№ С„Р°Р№Р»*/
 	public FileWriter lst;
 	
-	int[][] ciph_params = { /*размер ключа и длина блока*/
+	int[][] ciph_params = { /*СЂР°Р·РјРµСЂ РєР»СЋС‡Р° Рё РґР»РёРЅР° Р±Р»РѕРєР°*/
 							{16,16},	// AES
 							{16,8},		// Blowfish
 							{16,8},		// CAST5
@@ -55,7 +46,7 @@ public class CipherTest implements Runnable {
 	
 	String[] ciph_names = {"AES", "Blowfish", "CAST5", "DESede"}; 
 	
-	/*Конструктор для теста скоростей шифров на Java*/
+	/*РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ С‚РµСЃС‚Р° СЃРєРѕСЂРѕСЃС‚РµР№ С€РёС„СЂРѕРІ РЅР° Java*/
 	public CipherTest (int ciph_mode, int TEXT_SIZE, JTextArea textArea, JProgressBar progBar, JButton stBut,String lstName, int lang)
 	{
 		Security.addProvider(new BouncyCastleProvider());
@@ -74,13 +65,13 @@ public class CipherTest implements Runnable {
 		try {
 			lst = new FileWriter(lstName, true);
 		} catch (IOException e) {
-			new Err(6);	// Ошибка открытия файла для записи результатов теста
+			new Err(6);	// РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° РґР»СЏ Р·Р°РїРёСЃРё СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ С‚РµСЃС‚Р°
 			return;
 		}
 		
 	}
 	
-	/*Конструктор для теста скоростей шифров на C++*/
+	/*РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ С‚РµСЃС‚Р° СЃРєРѕСЂРѕСЃС‚РµР№ С€РёС„СЂРѕРІ РЅР° C++*/
 	public CipherTest (int TEXT_SIZE, JTextArea textArea, JProgressBar progBar, JButton stBut,String lstName, String exe_name, int lang)
 	{
 		
@@ -95,13 +86,13 @@ public class CipherTest implements Runnable {
 		try {
 			lst = new FileWriter(lstName, true);
 		} catch (IOException e) {
-			new Err(6);	// Ошибка открытия файла для записи результатов теста
+			new Err(6);	// РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р° РґР»СЏ Р·Р°РїРёСЃРё СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ С‚РµСЃС‚Р°
 			return;
 		}
 	}
 	
 
-/* Шифрование на Java */
+/* РЁРёС„СЂРѕРІР°РЅРёРµ РЅР° Java */
 public byte[] encryptOrDecrypt(int mode, byte[] key, byte[] IV , byte[] in) throws Throwable {
 	SecretKeySpec KS = new SecretKeySpec(key, ciph_name);
 	Cipher cipher = Cipher.getInstance(ciph_name+"/CBC/NoPadding", "BC");
@@ -125,7 +116,7 @@ public byte[] encryptOrDecrypt(int mode, byte[] key, byte[] IV , byte[] in) thro
 	return null;
 }
 
-/*Перевод байтового массива в HEX-строку*/
+/*РџРµСЂРµРІРѕРґ Р±Р°Р№С‚РѕРІРѕРіРѕ РјР°СЃСЃРёРІР° РІ HEX-СЃС‚СЂРѕРєСѓ*/
 public String bytesToHex(byte[] bytes)  {
 	char[] hexArray = "0123456789Abcdef".toCharArray();
 		char[] hexChars = new char[bytes.length * 2];
@@ -137,7 +128,7 @@ public String bytesToHex(byte[] bytes)  {
 		return new String(hexChars);
 	}
 
-/*Запись строки в файл*/
+/*Р—Р°РїРёСЃСЊ СЃС‚СЂРѕРєРё РІ С„Р°Р№Р»*/
 void writeToLst (String str) {
 	try {
 		lst.append(str);
@@ -145,7 +136,7 @@ void writeToLst (String str) {
 	}
 }
 
-/*Замер времени шифрования*/
+/*Р—Р°РјРµСЂ РІСЂРµРјРµРЅРё С€РёС„СЂРѕРІР°РЅРёСЏ*/
  public void printOpTime (long st)
     {
     	long en = System.nanoTime();
@@ -163,7 +154,7 @@ public void run() {
 	
 	switch (lang)
 	{
-	case 0: // тест алгоритма на Java
+	case 0: // С‚РµСЃС‚ Р°Р»РіРѕСЂРёС‚РјР° РЅР° Java
 	
 	textArea.append("\n=== "+ ciph_name+ " ===");
 	writeToLst("\n=== "+ ciph_name+ " ===");
