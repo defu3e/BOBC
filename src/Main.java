@@ -2,7 +2,7 @@ class Main {
 	
        public static void main (String args[]) throws Err {
     	   
-    	new SplashScreen();/*Показ заставки*/
+    	new SplashScreen();/*РџРѕРєР°Р· Р·Р°СЃС‚Р°РІРєРё*/
     	
     	try 
     	{
@@ -11,7 +11,7 @@ class Main {
     	catch (ArrayIndexOutOfBoundsException E) {new Err(8); return;}
     	
 		new GUI();		
-		GUI.main_GUI();	/*Передача управления классу GUI*/
+		GUI.main_GUI();	/*РџРµСЂРµРґР°С‡Р° СѓРїСЂР°РІР»РµРЅРёСЏ РєР»Р°СЃСЃСѓ GUI*/
 
 
     }
