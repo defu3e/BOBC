@@ -15,7 +15,7 @@ then
 	if [ "$mem" -ge 2000000 ] 
         then  
             cd bobc
-            java -Xmx15000m -jar BOBC.jar ok
+            java -Xmx1500m -jar BOBC.jar ok
     else 
         cd bobc
         java -jar BOBC.jar war_msg
